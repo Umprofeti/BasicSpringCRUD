@@ -6,13 +6,15 @@ import java.util.List;
 
 import com.skiatel.basiccrud.entity.User;
 import com.skiatel.basiccrud.entity.UserRequest;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import com.skiatel.basiccrud.odata.Database;
 
 @RestController
 @RequestMapping("/users")
-
+@Validated
 public class UsuarioControler {
     Database database = new Database();
 
@@ -29,7 +31,7 @@ public class UsuarioControler {
     }
 
     @PostMapping("/")
-    public ResponseEntity<String> post(@RequestBody UserRequest userRequest) throws SQLException {
+    public ResponseEntity<String> post(@Valid @RequestBody UserRequest userRequest) throws SQLException {
         try {
             database.MakeConection();
             database.createUser(userRequest.getNombre(), userRequest.getEmail());
@@ -54,7 +56,7 @@ public class UsuarioControler {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> put(@PathVariable Integer id, @RequestBody UserRequest userRequest) throws SQLException {
+    public ResponseEntity<String> put(@PathVariable Integer id, @Valid @RequestBody UserRequest userRequest) throws SQLException {
         database.MakeConection();
         database.actualizarUsuario(id, userRequest.getNombre(), userRequest.getEmail());
         database.closeConnection();
