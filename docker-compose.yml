@@ -1,0 +1,10 @@
+services:
+  springboot-basic-crud:
+    image: springboot-basic-crud:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql:api_database_reto_1?user=root&password=y0urP4ssw0rd
