@@ -97,15 +97,18 @@ public class Database {
         }
     }
 
-    public void actualizarUsuario(String p_nombre, String p_email) throws SQLException {
+    public void actualizarUsuario(Integer id, String p_nombre, String p_email) throws SQLException {
         if (con == null) {
             throw new SQLException("La Conexión no se ha establecido");
         }
-        String sql = "{call actualizarusuario(?, ?)}";
+        String sql = "{call actualizarusuario(?, ?,?)}";
         try (CallableStatement callStmt = con.prepareCall(sql)) {
-            callStmt.setString(1, p_nombre);
-            callStmt.setString(2, p_email);
+            callStmt.setInt(1, id);
+            callStmt.setString(2, p_nombre);
+            callStmt.setString(3, p_email);
             callStmt.execute();
+        }catch (SQLException e) {
+            throw new SQLException("Error al encontrar el usuario", e);
         }
     }
 

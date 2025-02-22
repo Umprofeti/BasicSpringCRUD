@@ -53,10 +53,10 @@ public class UsuarioControler {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<String> put(@RequestBody String Nombre, @RequestBody String Email) throws SQLException {
+    @PutMapping("/{id}")
+    public ResponseEntity<String> put(@PathVariable Integer id, @RequestBody UserRequest userRequest) throws SQLException {
         database.MakeConection();
-        database.actualizarUsuario(Nombre, Email);
+        database.actualizarUsuario(id, userRequest.getNombre(), userRequest.getEmail());
         database.closeConnection();
         return ResponseEntity.ok("");
     }
