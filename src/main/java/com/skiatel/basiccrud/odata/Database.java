@@ -120,6 +120,8 @@ public class Database {
         try (CallableStatement callStmt = con.prepareCall(sql)) {
             callStmt.setInt(1, id_usuario);
             callStmt.execute();
+        }catch (SQLException e) {
+            throw new SQLException("Error al encontrar el usuario", e);
         }
     }
 
