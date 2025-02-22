@@ -108,3 +108,17 @@ Este script levanta una base de datos con una tabla para realizar las operacione
 ### Documentacion de la API
 Para ver la documentación completa de la API una vez que el servicio esté ejecutandose, este se monstrará en
 http://localhost:8080/swagger-ui/index.htm
+
+### Contenerización de la aplicación
+
+En los archivos Dockerfile y docker-compose.yml se encuentra la configuración necesaria para contenerizar la aplicación.
+
+El archivo Dockerfile contiene las instrucciones necesarias para construir la imagen de la aplicación, mientras que el archivo docker-compose.yml contiene la configuración para levantar el servicio.
+
+### Ejecución de la aplicación
+
+Si se prefiere ejecutar el servicio de forma local simplemente se tiene abrir el archivo dentro de:
+
+```Build/libs/BASIC_SPRING_API_CRUD-0.0.1-SNAPSHOT.jar``` y ejecutarlo con el comando:
+
+```java -jar BASIC_SPRING_API_CRUD-0.0.1-SNAPSHOT.jar```
