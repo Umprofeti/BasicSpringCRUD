@@ -58,7 +58,7 @@ public class UsuarioControler {
         database.MakeConection();
         database.actualizarUsuario(id, userRequest.getNombre(), userRequest.getEmail());
         database.closeConnection();
-        return ResponseEntity.ok("");
+        return ResponseEntity.ok("Usuario Actualizado correctamente");
     }
 
     @DeleteMapping("/eliminar/{id}")
